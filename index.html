@@ -7,7 +7,7 @@
     <meta name="description" content="A luxury real estate homepage inspired by the Haven Framer template.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -20,8 +20,9 @@
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#homes">Homes</a>
           <a href="#details">Details</a>
+          <a href="#locations">Locations</a>
+          <a href="#team">Team</a>
           <a href="#journal">Journal</a>
-          <a href="#faq">FAQ</a>
         </nav>
         <a class="button button-dark" href="#contact">Get In Touch</a>
       </header>
@@ -32,6 +33,10 @@
             <p class="eyebrow">Curated residences</p>
             <h1>Extraordinary living begins here.</h1>
             <p>Timeless architecture, exclusive locations, and luxury homes designed to inspire your next chapter.</p>
+            <div class="hero-actions">
+              <a class="button button-dark" href="#homes">Explore Homes</a>
+              <a class="button button-outline" href="#contact">Book A Consultation</a>
+            </div>
           </div>
           <div class="hero-media reveal reveal-fade">
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85" alt="Luxury home with refined architecture">
@@ -48,6 +53,34 @@
           </div>
         </section>
 
+        <section class="stats section-pad">
+          <div class="stats-grid reveal reveal-stagger">
+            <article class="stagger-item">
+              <strong>$420M+</strong>
+              <span>Portfolio Value</span>
+            </article>
+            <article class="stagger-item">
+              <strong>18</strong>
+              <span>Private Residences</span>
+            </article>
+            <article class="stagger-item">
+              <strong>12+</strong>
+              <span>Years of Advisory</span>
+            </article>
+            <article class="stagger-item">
+              <strong>96%</strong>
+              <span>Client Referral Rate</span>
+            </article>
+          </div>
+          <div class="press-strip reveal reveal-up" aria-label="Press and partners">
+            <span>Featured by</span>
+            <strong>Dwell</strong>
+            <strong>Dezeen</strong>
+            <strong>Architectural Digest</strong>
+            <strong>Mansion Global</strong>
+          </div>
+        </section>
+
         <section class="section-pad homes" id="homes">
           <div class="section-heading reveal reveal-up">
             <p class="eyebrow">Private collection</p>
@@ -55,41 +88,77 @@
             <p>Handpicked residences where luxury, design, and comfort meet.</p>
           </div>
 
+          <form class="property-search reveal reveal-up" data-filter-form>
+            <label>
+              <span>Location</span>
+              <select name="location">
+                <option value="all">All Locations</option>
+                <option value="coastal">Coastal</option>
+                <option value="hillside">Hillside</option>
+                <option value="city">City</option>
+              </select>
+            </label>
+            <label>
+              <span>Budget</span>
+              <select name="budget">
+                <option value="all">Any Budget</option>
+                <option value="under1500">Under $1.5M</option>
+                <option value="under2500">Under $2.5M</option>
+                <option value="over2500">$2.5M+</option>
+              </select>
+            </label>
+            <label>
+              <span>Bedrooms</span>
+              <select name="beds">
+                <option value="all">Any</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+                <option value="6">6+</option>
+              </select>
+            </label>
+            <button class="button button-dark" type="submit">Refine Search</button>
+          </form>
+          <p class="filter-status" data-filter-status aria-live="polite"></p>
+
           <div class="property-rail reveal reveal-stagger" data-rail>
-            <article class="property-card stagger-item">
+            <article class="property-card stagger-item" data-property-card data-location="hillside" data-price="1150000" data-beds="4">
               <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85" alt="The Willowbrook modern home">
               <div>
                 <span>$1,150,000</span>
                 <h3>The Willowbrook</h3>
                 <p>A serene retreat blending modern architecture with natural surroundings for effortless living.</p>
                 <dl><dt>4</dt><dd>bedrooms</dd><dt>5</dt><dd>bathrooms</dd></dl>
+                <button class="property-link" type="button" data-open-property="willowbrook">View Residence</button>
               </div>
             </article>
-            <article class="property-card stagger-item">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1000&q=85" alt="Aurora Retreat residence">
+            <article class="property-card stagger-item" data-property-card data-location="coastal" data-price="3500000" data-beds="6">
+              <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1000&q=85" alt="Aurora Retreat residence">
               <div>
                 <span>$3,500,000</span>
                 <h3>Aurora Retreat</h3>
                 <p>A sanctuary with timeless design and exceptional craftsmanship to inspire your next chapter.</p>
                 <dl><dt>6</dt><dd>bedrooms</dd><dt>6.5</dt><dd>bathrooms</dd></dl>
+                <button class="property-link" type="button" data-open-property="aurora">View Residence</button>
               </div>
             </article>
-            <article class="property-card stagger-item">
+            <article class="property-card stagger-item" data-property-card data-location="city" data-price="1250000" data-beds="4">
               <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1000&q=85" alt="Sunset Haven house">
               <div>
                 <span>$1,250,000</span>
                 <h3>Sunset Haven</h3>
                 <p>A modern masterpiece featuring panoramic views and open, light-filled spaces designed for tranquility.</p>
                 <dl><dt>4</dt><dd>bedrooms</dd><dt>3</dt><dd>bathrooms</dd></dl>
+                <button class="property-link" type="button" data-open-property="sunset">View Residence</button>
               </div>
             </article>
-            <article class="property-card stagger-item">
+            <article class="property-card stagger-item" data-property-card data-location="hillside" data-price="2100000" data-beds="5">
               <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85" alt="The Crestview luxury estate">
               <div>
                 <span>$2,100,000</span>
                 <h3>The Crestview</h3>
                 <p>Where elegance meets innovation, with architecture, luxury, and nature in graceful balance.</p>
                 <dl><dt>5</dt><dd>bedrooms</dd><dt>5.5</dt><dd>bathrooms</dd></dl>
+                <button class="property-link" type="button" data-open-property="crestview">View Residence</button>
               </div>
             </article>
           </div>
@@ -139,6 +208,62 @@
           </div>
         </section>
 
+        <section class="locations section-pad" id="locations">
+          <div class="section-heading reveal reveal-up">
+            <p class="eyebrow">Neighborhoods</p>
+            <h2>Positioned in the city&apos;s most desirable enclaves.</h2>
+            <p>Each location is selected for privacy, access, daily rhythm, and long-term value.</p>
+          </div>
+          <div class="location-grid reveal reveal-stagger">
+            <article class="location-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=85" alt="Coastal luxury neighborhood">
+              <div>
+                <span>Coastal</span>
+                <h3>Ocean Ridge</h3>
+                <p>Quiet waterfront streets, private clubs, and sunset-facing homes built around calm.</p>
+              </div>
+            </article>
+            <article class="location-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85" alt="Hillside residence neighborhood">
+              <div>
+                <span>Hillside</span>
+                <h3>North Estates</h3>
+                <p>Elevated lots, generous setbacks, and architecture framed by natural landscape.</p>
+              </div>
+            </article>
+            <article class="location-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1600607688960-e095ff83135c?auto=format&fit=crop&w=900&q=85" alt="City luxury residence">
+              <div>
+                <span>City</span>
+                <h3>Gallery District</h3>
+                <p>Walkable dining, cultural access, and discreet residences close to everything.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="team section-pad" id="team">
+          <div class="section-heading reveal reveal-up">
+            <p class="eyebrow">Advisory team</p>
+            <h2>Guided by specialists who know design, value, and timing.</h2>
+            <p>From acquisition to handover, every client works with a focused team built around clarity.</p>
+          </div>
+          <div class="team-grid reveal reveal-stagger">
+            <article class="team-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85" alt="Portrait of Marcus Hale">
+              <div><span>Founder</span><h3>Marcus Hale</h3><p>Leads acquisition strategy and private client advisory.</p></div>
+            </article>
+            <article class="team-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=85" alt="Portrait of Elena Moore">
+              <div><span>Design Consultant</span><h3>Elena Moore</h3><p>Shapes finishes, spatial flow, and the design brief for each residence.</p></div>
+            </article>
+            <article class="team-card stagger-item">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&q=85" alt="Portrait of Adrian Cole">
+              <div><span>Property Advisor</span><h3>Adrian Cole</h3><p>Specializes in neighborhood intelligence and negotiation strategy.</p></div>
+            </article>
+          </div>
+        </section>
+
         <section class="journal section-pad" id="journal">
           <div class="section-heading reveal reveal-up">
             <p class="eyebrow">Editorial</p>
@@ -179,33 +304,99 @@
           <div class="faq-list reveal reveal-stagger">
             <details class="stagger-item" open>
               <summary>Can I customize the design of a Haven home?</summary>
-              <p>Absolutely. Each Haven home is tailored to reflect your unique vision, from layouts to finishes.</p>
+              <div class="faq-answer">
+                <p>Absolutely. Each Haven home is tailored to reflect your unique vision, from layouts to finishes.</p>
+              </div>
             </details>
             <details class="stagger-item">
               <summary>Where are Haven homes located?</summary>
-              <p>Haven homes are situated in prestigious and tranquil locations with privacy and easy access to key amenities.</p>
+              <div class="faq-answer">
+                <p>Haven homes are situated in prestigious and tranquil locations with privacy and easy access to key amenities.</p>
+              </div>
             </details>
             <details class="stagger-item">
               <summary>What is the process for purchasing a Haven home?</summary>
-              <p>Our process is transparent, from consultation and finish selection to final handover.</p>
+              <div class="faq-answer">
+                <p>Our process is transparent, from consultation and finish selection to final handover.</p>
+              </div>
             </details>
             <details class="stagger-item">
               <summary>Do you offer fully custom-built homes?</summary>
-              <p>Yes. Share your vision and our team will bring it to life with precision and care.</p>
+              <div class="faq-answer">
+                <p>Yes. Share your vision and our team will bring it to life with precision and care.</p>
+              </div>
             </details>
           </div>
         </section>
 
         <section class="contact" id="contact">
           <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1800&q=85" alt="Luxury home exterior">
-          <div class="contact-copy reveal">
-            <p class="eyebrow">Begin</p>
-            <h2>Your dream home awaits.</h2>
-            <p>Whether you are exploring our homes or envisioning something custom, we are here to bring your dream to life.</p>
-            <a class="button button-light" href="mailto:hello@example.com">Get In Touch</a>
+          <div class="contact-inner">
+            <div class="contact-copy reveal">
+              <p class="eyebrow">Begin</p>
+              <h2>Your dream home awaits.</h2>
+              <p>Whether you are exploring our homes or envisioning something custom, we are here to bring your dream to life.</p>
+            </div>
+            <form class="lead-form reveal reveal-up">
+              <label><span>Name</span><input type="text" name="name" placeholder="Your name"></label>
+              <label><span>Email</span><input type="email" name="email" placeholder="you@example.com"></label>
+              <label><span>Budget</span><select name="budget"><option>$1M - $2M</option><option>$2M - $4M</option><option>$4M+</option></select></label>
+              <label><span>Interest</span><select name="interest"><option>Buying</option><option>Selling</option><option>Custom build</option></select></label>
+              <label class="full-field"><span>Message</span><textarea name="message" rows="4" placeholder="Tell us what you are looking for"></textarea></label>
+              <button class="button button-light" type="submit">Submit Inquiry</button>
+            </form>
           </div>
         </section>
       </main>
+
+      <dialog class="property-dialog" id="willowbrook">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85" alt="The Willowbrook modern home">
+        <div class="dialog-body">
+          <p class="eyebrow">Hillside Residence</p>
+          <h2>The Willowbrook</h2>
+          <p>A serene four-bedroom retreat with warm interiors, garden views, and a flexible studio suite.</p>
+          <dl><dt>Price</dt><dd>$1,150,000</dd><dt>Bedrooms</dt><dd>4</dd><dt>Bathrooms</dt><dd>5</dd><dt>Area</dt><dd>4,800 sq ft</dd></dl>
+          <ul><li>Private garden terrace</li><li>Chef&apos;s kitchen</li><li>Detached guest studio</li></ul>
+          <a class="button button-dark" href="#contact">Request Details</a>
+        </div>
+      </dialog>
+      <dialog class="property-dialog" id="aurora">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=85" alt="Aurora Retreat residence">
+        <div class="dialog-body">
+          <p class="eyebrow">Coastal Estate</p>
+          <h2>Aurora Retreat</h2>
+          <p>A six-bedroom coastal sanctuary with panoramic entertaining spaces and hotel-grade privacy.</p>
+          <dl><dt>Price</dt><dd>$3,500,000</dd><dt>Bedrooms</dt><dd>6</dd><dt>Bathrooms</dt><dd>6.5</dd><dt>Area</dt><dd>7,900 sq ft</dd></dl>
+          <ul><li>Infinity pool</li><li>Wine room</li><li>Ocean-view primary suite</li></ul>
+          <a class="button button-dark" href="#contact">Request Details</a>
+        </div>
+      </dialog>
+      <dialog class="property-dialog" id="sunset">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1200&q=85" alt="Sunset Haven house">
+        <div class="dialog-body">
+          <p class="eyebrow">City Residence</p>
+          <h2>Sunset Haven</h2>
+          <p>A light-filled modern home with layered terraces, gallery walls, and a calm urban outlook.</p>
+          <dl><dt>Price</dt><dd>$1,250,000</dd><dt>Bedrooms</dt><dd>4</dd><dt>Bathrooms</dt><dd>3</dd><dt>Area</dt><dd>3,950 sq ft</dd></dl>
+          <ul><li>Rooftop lounge</li><li>Floor-to-ceiling glass</li><li>Two-car garage</li></ul>
+          <a class="button button-dark" href="#contact">Request Details</a>
+        </div>
+      </dialog>
+      <dialog class="property-dialog" id="crestview">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close">×</button>
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=85" alt="The Crestview luxury estate">
+        <div class="dialog-body">
+          <p class="eyebrow">Hillside Estate</p>
+          <h2>The Crestview</h2>
+          <p>A five-bedroom architectural estate where stone, timber, and landscape meet with restraint.</p>
+          <dl><dt>Price</dt><dd>$2,100,000</dd><dt>Bedrooms</dt><dd>5</dd><dt>Bathrooms</dt><dd>5.5</dd><dt>Area</dt><dd>6,200 sq ft</dd></dl>
+          <ul><li>Wellness suite</li><li>Outdoor kitchen</li><li>Private study wing</li></ul>
+          <a class="button button-dark" href="#contact">Request Details</a>
+        </div>
+      </dialog>
 
       <footer class="footer reveal reveal-up">
         <div class="footer-panel">
@@ -222,9 +413,9 @@
           </nav>
           <p class="footer-copyright">@2026 Haven & Co.</p>
           <div class="footer-socials" aria-label="Social links">
-            <a href="#">Twitter (X)</a>
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
+            <a href="https://x.com/">Twitter (X)</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.linkedin.com/">LinkedIn</a>
           </div>
         </div>
         <a class="footer-wordmark" href="#top" aria-label="Back to top">Haven & Co.</a>
