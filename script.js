@@ -11,6 +11,8 @@ const filterStatus = document.querySelector("[data-filter-status]");
 const propertyTriggers = document.querySelectorAll("[data-open-property]");
 const closeDialogButtons = document.querySelectorAll("[data-close-dialog]");
 const leadForm = document.querySelector(".lead-form");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const navLinks = document.querySelectorAll(".nav-links a");
 
 document.body.classList.add("is-loaded");
 
@@ -45,6 +47,26 @@ const updateScrollEffects = () => {
 
 updateScrollEffects();
 window.addEventListener("scroll", updateScrollEffects, { passive: true });
+
+if (menuToggle && nav) {
+  const setMenuState = (isOpen) => {
+    nav.classList.toggle("is-menu-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  };
+
+  menuToggle.addEventListener("click", () => {
+    setMenuState(!nav.classList.contains("is-menu-open"));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuState(false);
+  });
+}
 
 if (rail) {
   let active = false;

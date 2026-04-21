@@ -122,6 +122,44 @@ a {
   color: var(--white);
 }
 
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 250, 240, 0.38);
+  border-radius: 6px;
+  background: rgba(255, 250, 240, 0.08);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  grid-column: 1;
+  grid-row: 1;
+  background: currentColor;
+  transition: transform 240ms ease;
+}
+
+.menu-toggle span:first-child {
+  transform: translateY(-4px);
+}
+
+.menu-toggle span:last-child {
+  transform: translateY(4px);
+}
+
+.nav.is-menu-open .menu-toggle span:first-child {
+  transform: rotate(45deg);
+}
+
+.nav.is-menu-open .menu-toggle span:last-child {
+  transform: rotate(-45deg);
+}
+
 .button {
   position: relative;
   display: inline-flex;
@@ -713,10 +751,6 @@ h1 {
   display: flex;
   width: max-content;
   animation: marquee 30s linear infinite;
-}
-
-.statement:hover .statement-track {
-  animation-play-state: paused;
 }
 
 .statement span {
@@ -1355,11 +1389,49 @@ details[open] .faq-answer p {
 
 @media (max-width: 900px) {
   .nav {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
   }
 
   .nav-links {
-    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 0;
+    padding: 8px;
+    border: 1px solid rgba(255, 250, 240, 0.28);
+    border-radius: 8px;
+    background: rgba(23, 23, 20, 0.78);
+    color: var(--white);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    backdrop-filter: blur(20px);
+    transition: opacity 220ms ease, transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .nav.is-menu-open .nav-links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(255, 250, 240, 0.12);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: 0;
+  }
+
+  .menu-toggle {
+    display: grid;
   }
 
   .hero,
@@ -1449,6 +1521,15 @@ details[open] .faq-answer p {
     padding: 0 13px;
   }
 
+  .nav > .button {
+    display: none;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
   .hero-actions,
   .lead-form,
   .property-search,
@@ -1461,6 +1542,20 @@ details[open] .faq-answer p {
 
   .hero-actions {
     display: grid;
+  }
+
+  .statement {
+    padding: 22px 0;
+  }
+
+  .statement-track {
+    animation-duration: 24s;
+  }
+
+  .statement span {
+    padding-right: 34px;
+    font-size: clamp(34px, 12vw, 52px);
+    line-height: 1;
   }
 
   .hero {
